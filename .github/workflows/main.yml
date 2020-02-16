@@ -10,7 +10,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Test
-      uses: Leseratte10/test@faa9e4ea2afe883d8ff6cb87d9d5eeaea132603e
+      uses: Leseratte10/compile-devkitARM-r32@5bc6389ce8e6ea34b459b7b6fa6110f09ac19b8c
       id: asdf
     - uses: actions/upload-artifact@v1
       with: 
