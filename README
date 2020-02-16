@@ -1,0 +1,8 @@
+# devkitARM r32
+
+devkitARM r32 is needed for lots of ARM applications, including compiling new cIOS or other IOS-related applications. 
+
+The original binaries for devkitARM r32 cannot be downloaded anymore 
+(except for the Windows build from my archive at https://wii.leseratte10.de), 
+thus I am providing this Dockerfile that downloads the necessary sources from my archive
+and then compiles a working devkitARM r32 for Linux. 
