@@ -15,9 +15,12 @@ jobs:
     - name: Compile devkitARM on Debian Buster
       uses: ./.github/action/debianbuster
       id: debianbuster
-    - name: Compile devkitARM on Ubuntu 19.10 Eoan
-      uses: ./.github/action/ubuntueoan
-      id: ubuntueoan
+    - name: Compile devkitARM on Ubuntu 18.04 Bionic LTS
+      uses: ./.github/action/ubuntubionic
+      id: ubuntubionic
+    - name: Compile devkitARM on Ubuntu 20.04 Focal
+      uses: ./.github/action/ubuntufocal
+      id: ubuntufocal
     - name: Upload from Debian Squeeze
       uses: actions/upload-artifact@v1
       with:
@@ -28,9 +31,14 @@ jobs:
       with:
         name: devkitARM-r32-linux_debian-buster.tar.gz
         path: devkitARM-r32-linux_debian-buster.tar.gz
-    - name: Upload from Ubuntu 19.10 Eoan
+    - name: Upload from Ubuntu 18.04 Bionic LTS
       uses: actions/upload-artifact@v1
       with:
-        name: devkitARM-r32-linux_ubuntu-eoan.tar.gz
-        path: devkitARM-r32-linux_ubuntu-eoan.tar.gz
+        name: devkitARM-r32-linux_ubuntu-bionic.tar.gz
+        path: devkitARM-r32-linux_ubuntu-bionic.tar.gz
+    - name: Upload from Ubuntu 20.04 Focal
+      uses: actions/upload-artifact@v1
+      with:
+        name: devkitARM-r32-linux_ubuntu-focal.tar.gz
+        path: devkitARM-r32-linux_ubuntu-focal.tar.gz
 

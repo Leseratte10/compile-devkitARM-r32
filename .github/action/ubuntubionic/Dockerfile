@@ -1,4 +1,4 @@
-FROM ubuntu:eoan
+FROM ubuntu:bionic
 MAINTAINER Leseratte
 
 # This Dockerfile compiles devkitARM r32 for Linux.
@@ -70,7 +70,7 @@ RUN rm buildscripts/dkarm-eabi/scripts/build-tools.sh && cd buildscripts && ./bu
 
 
 # Put compiled devkitARM into archive: 
-RUN tar -cvf /opt/devkitARM-r32-linux_ubuntu-eoan.tar.gz -C /opt/ devkitARM/
+RUN tar -cvf /opt/devkitARM-r32-linux_ubuntu-bionic.tar.gz -C /opt/ devkitARM/
 
 COPY dist.sh /dist.sh
 
