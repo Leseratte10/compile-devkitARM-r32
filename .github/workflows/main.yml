@@ -9,10 +9,17 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: Test
-      uses: Leseratte10/compile-devkitARM-r32@5bc6389ce8e6ea34b459b7b6fa6110f09ac19b8c
+    - name: Compile devkitARM
+      uses: ./.github/actions
       id: asdf
-    - uses: actions/upload-artifact@v1
+    - name: Upload Debian Buster
+      uses: actions/upload-artifact@v1
       with: 
-        name: devkitARM-r32-linux.tar.gz
-        path: devkitARM-r32-linux.tar.gz
+        name: devkitARM-r32-linux_debian-buster.tar.gz
+        path: devkitARM-r32-linux_debian-buster.tar.gz
+    - name: Upload Debian Squeeze
+      uses: actions/upload-artifact@v1
+      with:
+        name: devkitARM-r32-linux_debian-squeeze.tar.gz
+        path: devkitARM-r32-linux_debian-squeeze.tar.gz
+
