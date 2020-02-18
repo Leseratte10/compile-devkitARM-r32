@@ -10,7 +10,10 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Compile devkitARM
-      uses: ./.github/actions
+      uses: ./.github/action/squeeze
+      id: asd
+    - name: Compile devkitARM
+      uses: ./.github/action/buster
       id: asdf
     - name: Upload Debian Buster
       uses: actions/upload-artifact@v1
