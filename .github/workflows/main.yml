@@ -3,39 +3,52 @@ name: CI
 on: [push]
 
 jobs:
-  build:
-
+  debian-squeeze:
     runs-on: ubuntu-latest
-
     steps:
     - uses: actions/checkout@v2
     - name: Compile devkitARM on Debian Squeeze
       uses: ./.github/action/debiansqueeze
       id: debiansqueeze
-    - name: Compile devkitARM on Debian Buster
-      uses: ./.github/action/debianbuster
-      id: debianbuster
-    - name: Compile devkitARM on Ubuntu 18.04 Bionic LTS
-      uses: ./.github/action/ubuntubionic
-      id: ubuntubionic
-    - name: Compile devkitARM on Ubuntu 20.04 Focal
-      uses: ./.github/action/ubuntufocal
-      id: ubuntufocal
     - name: Upload from Debian Squeeze
       uses: actions/upload-artifact@v1
       with:
         name: devkitARM-r32-linux_debian-squeeze.tar.gz
         path: devkitARM-r32-linux_debian-squeeze.tar.gz
+
+  debian-buster:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Compile devkitARM on Debian Buster
+      uses: ./.github/action/debianbuster
+      id: debianbuster
     - name: Upload from Debian Buster
       uses: actions/upload-artifact@v1
       with:
         name: devkitARM-r32-linux_debian-buster.tar.gz
         path: devkitARM-r32-linux_debian-buster.tar.gz
+
+  ubuntu-bionic:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Compile devkitARM on Ubuntu 18.04 Bionic LTS
+      uses: ./.github/action/ubuntubionic
+      id: ubuntubionic
     - name: Upload from Ubuntu 18.04 Bionic LTS
       uses: actions/upload-artifact@v1
       with:
         name: devkitARM-r32-linux_ubuntu-bionic.tar.gz
         path: devkitARM-r32-linux_ubuntu-bionic.tar.gz
+
+  ubuntu-focal:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Compile devkitARM on Ubuntu 20.04 Focal
+      uses: ./.github/action/ubuntufocal
+      id: ubuntufocal
     - name: Upload from Ubuntu 20.04 Focal
       uses: actions/upload-artifact@v1
       with:

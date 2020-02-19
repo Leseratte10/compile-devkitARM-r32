@@ -74,7 +74,7 @@ RUN rm buildscripts/dkarm-eabi/scripts/build-tools.sh && cd buildscripts && ./bu
 
 
 # Put compiled devkitARM into archive: 
-RUN tar -cvf /opt/devkitARM-r32-linux_ubuntu-focal.tar.gz -C /opt/ devkitARM/
+RUN tar -cvzf /opt/devkitARM-r32-linux_ubuntu-focal.tar.gz -C /opt/ devkitARM/
 
 COPY dist.sh /dist.sh
 
