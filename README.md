@@ -7,3 +7,5 @@ The original binaries for devkitARM r32 cannot be downloaded anymore
 thus I am providing these Dockerfiles that run on Debian squeeze, Debian buster, 
 Ubuntu Bionic and Ubuntu Focal (and probably on other versions, too, if you modify them a bit). 
 The Dockerfiles then compile a working devkitARM r32 for that particular distribution. 
+
+Check out this [wiki page](https://github.com/Leseratte10/compile-devkitARM-r32/wiki/Compiling) if you want to compile devkitARM r32 yourself. 
