@@ -55,3 +55,16 @@ jobs:
         name: devkitARM-r32-linux_ubuntu-focal.tar.gz
         path: devkitARM-r32-linux_ubuntu-focal.tar.gz
 
+  ubuntu-groovy:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Compile devkitARM on Ubuntu 20.10 Groovy
+      uses: ./.github/action/ubuntugroovy
+      id: ubuntufocal
+    - name: Upload from Ubuntu 20.10 Groovy
+      uses: actions/upload-artifact@v1
+      with:
+        name: devkitARM-r32-linux_ubuntu-groovy.tar.gz
+        path: devkitARM-r32-linux_ubuntu-groovy.tar.gz
+
