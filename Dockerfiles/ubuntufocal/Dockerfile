@@ -7,6 +7,8 @@ MAINTAINER Leseratte
 
 # This Dockerfile compiles devkitARM r32 for Linux.
 
+ENV DEBIAN_FRONTEND="noninteractive" TZ="Europe/London"
+
 # Update and install a bunch of crap: 
 RUN apt-get update -y --force-yes && \
 apt-get install -y --force-yes \
