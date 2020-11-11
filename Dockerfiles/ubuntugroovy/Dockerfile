@@ -67,7 +67,7 @@ BUILD_DKPRO_PACKAGE=1
 # In fact, trying to build tools does actually fail.
 # Remove the script so compiling doesn't run into an error, 
 # then run the compiling script: 
-RUN rm buildscripts/dkarm-eabi/scripts/build-tools.sh && cd buildscripts ./build-devkit.sh
+RUN rm buildscripts/dkarm-eabi/scripts/build-tools.sh && cd buildscripts && ./build-devkit.sh
 
 
 # Put compiled devkitARM into archive: 

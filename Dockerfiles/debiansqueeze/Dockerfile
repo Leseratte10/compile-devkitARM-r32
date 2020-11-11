@@ -28,7 +28,7 @@ bzip2 patch zlib1g-dev unzip dos2unix g++
 # instead and it would work just fine. 
 
 # Either copy the custom build scripts into the container, or download them using wget: 
-RUN wget https://wii.leseratte10.de/devkitPro/file.php/buildscripts-20101023-custom.tar.bz2 --no-check-certificate 
+RUN wget --no-check-certificate http://wii.leseratte10.de/devkitPro/file.php/buildscripts-20101023-custom.tar.bz2
 #COPY buildscripts-20101023-custom.tar.bz2 /
 
 RUN tar -xvf buildscripts-20101023-custom.tar.bz2 
