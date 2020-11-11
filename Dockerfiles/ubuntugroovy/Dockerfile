@@ -6,11 +6,9 @@ MAINTAINER Leseratte
 # Update and install a bunch of crap: 
 RUN apt-get update -y --force-yes && \
 apt-get install -y --force-yes \
-gcc-8 make autoconf automake bison flex libreadline-dev libncurses5-dev \
+gcc make autoconf automake bison flex libreadline-dev libncurses5-dev \
 texinfo libgmp3-dev libmpfr-dev libmpc-dev libelf-dev gawk wget \
-bzip2 patch zlib1g-dev unzip dos2unix g++
-
-# Yeah, we need gcc-8, newer versions of GCC apparently fail.
+bzip2 patch zlib1g-dev unzip dos2unix g++ file
 
 # Download buildscrips (buildscripts-20101023-custom.tar.bz2)
 # This is a custom buildscripts archive by Leseratte
@@ -52,6 +50,7 @@ sed -i 's#http://downloads.sourceforge.net/devkitpro#https://github.com/Leseratt
 # Now make sure we get rid of the fucking -Werror parameter
 sed -i 's#touch patched_sources#touch patched_sources; bash ./fix-compile-errors.sh#g' ./build-devkit.sh
 
+
 COPY fix-compile-errors.sh /buildscripts/fix-compile-errors.sh
 COPY 0001-patch-gcc-fix-gnu-inline.patch /buildscripts/0001-patch-gcc-fix-gnu-inline.patch
 
@@ -68,7 +67,7 @@ BUILD_DKPRO_PACKAGE=1
 # In fact, trying to build tools does actually fail.
 # Remove the script so compiling doesn't run into an error, 
 # then run the compiling script: 
-RUN rm buildscripts/dkarm-eabi/scripts/build-tools.sh && cd buildscripts && CC="gcc-8" ./build-devkit.sh
+RUN rm buildscripts/dkarm-eabi/scripts/build-tools.sh && cd buildscripts ./build-devkit.sh
 
 
 # Put compiled devkitARM into archive: 
