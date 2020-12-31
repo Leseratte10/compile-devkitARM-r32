@@ -15,6 +15,45 @@ jobs:
       with:
         name: devkitARM-r32-linux_debian-squeeze.tar.gz
         path: devkitARM-r32-linux_debian-squeeze.tar.gz
+        
+  debian-wheezy:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Compile devkitARM on Debian Wheezy
+      uses: ./.github/action/debianwheezy
+      id: debianwheezy
+    - name: Upload from Debian Wheezy
+      uses: actions/upload-artifact@v1
+      with:
+        name: devkitARM-r32-linux_debian-wheezy.tar.gz
+        path: devkitARM-r32-linux_debian-wheezy.tar.gz
+        
+  debian-jessie:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Compile devkitARM on Debian Jessie
+      uses: ./.github/action/debianjessie
+      id: debianjessie
+    - name: Upload from Debian Jessie
+      uses: actions/upload-artifact@v1
+      with:
+        name: devkitARM-r32-linux_debian-jessie.tar.gz
+        path: devkitARM-r32-linux_debian-Jessie.tar.gz
+        
+  debian-stretch:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Compile devkitARM on Debian Stretch
+      uses: ./.github/action/debianstretch
+      id: debianstretch
+    - name: Upload from Debian Stretch
+      uses: actions/upload-artifact@v1
+      with:
+        name: devkitARM-r32-linux_debian-stretch.tar.gz
+        path: devkitARM-r32-linux_debian-stretch.tar.gz
 
   debian-buster:
     runs-on: ubuntu-latest
@@ -28,6 +67,19 @@ jobs:
       with:
         name: devkitARM-r32-linux_debian-buster.tar.gz
         path: devkitARM-r32-linux_debian-buster.tar.gz
+
+  ubuntu-xenial:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Compile devkitARM on Ubuntu 16.04 Xenial LTS
+      uses: ./.github/action/ubuntuxenial
+      id: ubuntuxenial
+    - name: Upload from Ubuntu 16.04 Xenial LTS
+      uses: actions/upload-artifact@v1
+      with:
+        name: devkitARM-r32-linux_ubuntu-xenial.tar.gz
+        path: devkitARM-r32-linux_ubuntu-xenial.tar.gz
 
   ubuntu-bionic:
     runs-on: ubuntu-latest
