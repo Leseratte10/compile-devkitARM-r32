@@ -42,9 +42,9 @@ sed -i 's#MAXMOD_VER=1.0.6#MAXMOD_VER=1.0.9#g' ./build-devkit.sh && \
 sed -i 's#FILESYSTEM_VER=0.9.6#FILESYSTEM_VER=0.9.11#g' ./build-devkit.sh && \
 sed -i 's#LIBFAT_VER=1.0.8#LIBFAT_VER=1.1.0#g' ./build-devkit.sh && \
 #
-# Also fix the link so that it points to Github
-sed -i 's#http://downloads.sourceforge.net/devkitpro#https://github.com/Leseratte10/compile-devkitARM-r32/releases/download/helpers#g' ./build-devkit.sh && \
-#sed -i 's#FETCH=wget#FETCH="wget --no-check-certificate"#g' ./build-devkit.sh && \#
+# Also fix the link so that it points to my Server
+sed -i 's#http://downloads.sourceforge.net/devkitpro#http://wii.leseratte10.de/devkitPro/file.php#g' ./build-devkit.sh && \
+sed -i 's#FETCH=wget#FETCH="wget --no-check-certificate"#g' ./build-devkit.sh && \
 #
 # Now make sure we get rid of the fucking -Werror parameter
 sed -i 's#touch patched_sources#touch patched_sources; bash ./fix-compile-errors.sh#g' ./build-devkit.sh

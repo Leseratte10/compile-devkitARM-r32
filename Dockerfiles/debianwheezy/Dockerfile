@@ -6,7 +6,6 @@ MAINTAINER Leseratte
 # Set up package sources: 
 RUN echo "deb http://archive.debian.org/debian/ wheezy main non-free contrib" > /etc/apt/sources.list && \
 echo "deb http://archive.debian.org/debian-security/ wheezy/updates main non-free contrib" >> /etc/apt/sources.list && \
-echo "deb http://archive.debian.org/debian wheezy-lts main" >> /etc/apt/sources.list && \
 echo "Acquire::Check-Valid-Until false;" > /etc/apt/apt.conf
 
 # Update and install a bunch of crap: 
@@ -52,7 +51,10 @@ sed -i 's#LIBFAT_VER=1.0.8#LIBFAT_VER=1.1.0#g' ./build-devkit.sh && \
 #
 # Also fix the link so that it points to my archive server
 sed -i 's#http://downloads.sourceforge.net/devkitpro#http://wii.leseratte10.de/devkitPro/file.php#g' ./build-devkit.sh && \
-sed -i 's#FETCH=wget#FETCH="wget --no-check-certificate"#g' ./build-devkit.sh
+sed -i 's#FETCH=wget#FETCH="wget --no-check-certificate"#g' ./build-devkit.sh && \
+sed -i 's#touch patched_sources#touch patched_sources; bash ./fix-compile-errors.sh#g' ./build-devkit.sh
+
+COPY fix-compile-errors.sh /buildscripts/fix-compile-errors.sh
 
 # Now that that's done, set a few environment variables so that the
 # installer knows what to do

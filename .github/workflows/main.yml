@@ -40,7 +40,7 @@ jobs:
       uses: actions/upload-artifact@v1
       with:
         name: devkitARM-r32-linux_debian-jessie.tar.gz
-        path: devkitARM-r32-linux_debian-Jessie.tar.gz
+        path: devkitARM-r32-linux_debian-jessie.tar.gz
         
   debian-stretch:
     runs-on: ubuntu-latest

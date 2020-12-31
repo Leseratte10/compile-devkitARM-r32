@@ -20,6 +20,7 @@ echo -n "FIX / REMOVE TEXI FILES ... "
 find -name "*.texi" -print0 | xargs -0 sed -i 's#@itemx#@item#g'
 echo > ./gcc/doc/gcc.texi
 cd ..
+echo > binutils-2.20.1/bfd/doc/bfd.texinfo
 
 echo "done"
 echo "Patching done"
