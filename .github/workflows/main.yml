@@ -68,6 +68,19 @@ jobs:
         name: devkitARM-r32-linux_debian-buster.tar.gz
         path: devkitARM-r32-linux_debian-buster.tar.gz
 
+  debian-bullseye:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Compile devkitARM on Debian Bullseye
+      uses: ./.github/action/debianbullseye
+      id: debianbullseye
+    - name: Upload from Debian Bullseye
+      uses: actions/upload-artifact@v1
+      with:
+        name: devkitARM-r32-linux_debian-bullseye.tar.gz
+        path: devkitARM-r32-linux_debian-bullseye.tar.gz
+
   ubuntu-xenial:
     runs-on: ubuntu-latest
     steps:
@@ -113,10 +126,22 @@ jobs:
     - uses: actions/checkout@v2
     - name: Compile devkitARM on Ubuntu 20.10 Groovy
       uses: ./.github/action/ubuntugroovy
-      id: ubuntufocal
+      id: ubuntugroovy
     - name: Upload from Ubuntu 20.10 Groovy
       uses: actions/upload-artifact@v1
       with:
         name: devkitARM-r32-linux_ubuntu-groovy.tar.gz
         path: devkitARM-r32-linux_ubuntu-groovy.tar.gz
 
+  ubuntu-hirsute:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Compile devkitARM on Ubuntu 21.04 Hirsute
+      uses: ./.github/action/ubuntuhirsute
+      id: ubuntuhirsute
+    - name: Upload from Ubuntu 21.04 Hirsute
+      uses: actions/upload-artifact@v1
+      with:
+        name: devkitARM-r32-linux_ubuntu-hirsute.tar.gz
+        path: devkitARM-r32-linux_ubuntu-hirsute.tar.gz
