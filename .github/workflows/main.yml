@@ -145,3 +145,17 @@ jobs:
       with:
         name: devkitARM-r32-linux_ubuntu-hirsute.tar.gz
         path: devkitARM-r32-linux_ubuntu-hirsute.tar.gz
+
+  ubuntu-impish:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Compile devkitARM on Ubuntu 21.10 Impish
+      uses: ./.github/action/ubuntuimpish
+      id: ubuntuhirsute
+    - name: Upload from Ubuntu 21.10 Impish
+      uses: actions/upload-artifact@v1
+      with:
+        name: devkitARM-r32-linux_ubuntu-impish.tar.gz
+        path: devkitARM-r32-linux_ubuntu-impish.tar.gz
+        
