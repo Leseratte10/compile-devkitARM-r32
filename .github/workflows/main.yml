@@ -111,7 +111,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - name: Compile devkitARM on Ubuntu 20.04 Focal
+    - name: Compile devkitARM on Ubuntu 20.04 Focal LTS
       uses: ./.github/action/ubuntufocal
       id: ubuntufocal
     - name: Upload from Ubuntu 20.04 Focal
@@ -150,8 +150,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - name: Compile devkitARM on Ubuntu 22.04 Jammy
-      uses: ./.github/action/ubuntuimpish
+    - name: Compile devkitARM on Ubuntu 22.04 Jammy LTS
+      uses: ./.github/action/ubuntujammy
       id: ubuntujammy
     - name: Upload from Ubuntu 22.04 Jammy
       uses: actions/upload-artifact@v1

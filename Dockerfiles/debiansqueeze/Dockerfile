@@ -27,11 +27,30 @@ bzip2 patch zlib1g-dev unzip dos2unix g++
 # If you wanted, you could checkout that particular commit from the git repository
 # instead and it would work just fine. 
 
-# Either copy the custom build scripts into the container, or download them using wget: 
-RUN wget --no-check-certificate http://wii.leseratte10.de/devkitPro/file.php/buildscripts-20101023-custom.tar.bz2
-#COPY buildscripts-20101023-custom.tar.bz2 /
+# Copy the custom build scripts into the container
+ADD https://github.com/Leseratte10/compile-devkitARM-r32/releases/download/helpers/buildscripts-20101023-custom.tar.bz2 /
 
 RUN tar -xvf buildscripts-20101023-custom.tar.bz2 
+
+# Download all source code files we need. 
+# The Compile script would usually do this automatically, but for some reason that's unreliable. 
+
+ADD https://github.com/Leseratte10/compile-devkitARM-r32/releases/download/helpers/binutils-2.20.1.tar.bz2 /buildscripts/
+ADD https://github.com/Leseratte10/compile-devkitARM-r32/releases/download/helpers/gcc-core-4.5.1.tar.bz2 /buildscripts/
+ADD https://github.com/Leseratte10/compile-devkitARM-r32/releases/download/helpers/gcc-g++-4.5.1.tar.bz2 /buildscripts/
+ADD https://github.com/Leseratte10/compile-devkitARM-r32/releases/download/helpers/gcc-objc-4.5.1.tar.bz2 /buildscripts/
+ADD https://github.com/Leseratte10/compile-devkitARM-r32/releases/download/helpers/gdb-7.2.tar.bz2 /buildscripts/
+ADD https://github.com/Leseratte10/compile-devkitARM-r32/releases/download/helpers/newlib-1.18.0.tar.gz /buildscripts/
+ADD https://github.com/Leseratte10/compile-devkitARM-r32/releases/download/helpers/libfat-src-1.1.0.tar.bz2 /buildscripts/
+ADD https://github.com/Leseratte10/compile-devkitARM-r32/releases/download/helpers/libnds-src-1.5.10.tar.bz2 /buildscripts/
+ADD https://github.com/Leseratte10/compile-devkitARM-r32/releases/download/helpers/libgba-src-20150106.tar.bz2 /buildscripts/
+ADD https://github.com/Leseratte10/compile-devkitARM-r32/releases/download/helpers/dswifi-src-0.3.17.tar.bz2 /buildscripts/
+ADD https://github.com/Leseratte10/compile-devkitARM-r32/releases/download/helpers/libmirko-src-0.9.7.tar.bz2 /buildscripts/
+ADD https://github.com/Leseratte10/compile-devkitARM-r32/releases/download/helpers/default_arm7-src-0.5.27.tar.bz2 /buildscripts/
+ADD https://github.com/Leseratte10/compile-devkitARM-r32/releases/download/helpers/maxmod-src-1.0.9.tar.bz2 /buildscripts/
+ADD https://github.com/Leseratte10/compile-devkitARM-r32/releases/download/helpers/libfilesystem-src-0.9.11.tar.bz2 /buildscripts/
+
+RUN echo > /buildscripts/downloaded_sources
 
 # Patch a bunch of library versions in the script. 
 # We don't have sources for most of the versions used here so we can't use them, 
@@ -59,9 +78,9 @@ sed -i 's#FETCH=wget#FETCH="wget --no-check-certificate"#g' ./build-devkit.sh
 # package: 1 = devkitARM, 2=devkitPPC, 3=devkitA64
 ENV BUILD_DKPRO_INSTALLDIR=/opt/ \
 BUILD_DKPRO_AUTOMATED=1 \
-BUILD_DKPRO_DOWNLOAD=2 \
-BUILD_DKPRO_PACKAGE=1 
-
+BUILD_DKPRO_DOWNLOAD=1 \
+BUILD_DKPRO_PACKAGE=1 \
+BUILD_DKPRO_SRCDIR=/buildscripts
 
 # We don't need to build the tools, we only need GCC. 
 # In fact, trying to build tools does actually fail.
