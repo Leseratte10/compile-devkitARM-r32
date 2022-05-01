@@ -152,10 +152,23 @@ jobs:
     - uses: actions/checkout@v2
     - name: Compile devkitARM on Ubuntu 21.10 Impish
       uses: ./.github/action/ubuntuimpish
-      id: ubuntuhirsute
+      id: ubuntuimpish
     - name: Upload from Ubuntu 21.10 Impish
       uses: actions/upload-artifact@v1
       with:
         name: devkitARM-r32-linux_ubuntu-impish.tar.gz
         path: devkitARM-r32-linux_ubuntu-impish.tar.gz
+        
+  ubuntu-jammy:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Compile devkitARM on Ubuntu 22.04 Jammy
+      uses: ./.github/action/ubuntuimpish
+      id: ubuntujammy
+    - name: Upload from Ubuntu 22.04 Jammy
+      uses: actions/upload-artifact@v1
+      with:
+        name: devkitARM-r32-linux_ubuntu-jammy.tar.gz
+        path: devkitARM-r32-linux_ubuntu-jammy.tar.gz
         

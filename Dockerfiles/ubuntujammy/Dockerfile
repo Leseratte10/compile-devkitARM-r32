@@ -1,4 +1,4 @@
-FROM ubuntu:jammy
+FROM ubuntu:impish
 MAINTAINER Leseratte
 
 # This Dockerfile compiles devkitARM r32 for Linux.
